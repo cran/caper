@@ -668,8 +668,10 @@ anova.pglslist <- function(object, ..., scale = 0, test = "F"){
 	    stop('models were fitted with different branch length transformations.')
 	
     nmodels <- length(objects)
-    if (nmodels == 1) 
+    if (nmodels == 1) {
+	anova.lm <- getS3method("anova", "lm")
         return(anova.lm(object))
+    }
     resdf <- as.numeric(lapply(objects, function(X) X$n - X$k))
     resdev <- as.numeric(lapply(objects, '[[', 'RSSQ'))
     table <- data.frame(resdf, resdev, c(NA, -diff(resdf)), c(NA, 
