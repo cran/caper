@@ -75,8 +75,9 @@ comparative.data <- function(phy, data, names.col, vcv=FALSE, vcv.dim=2, na.omit
 			matchedPhy$node.label <- IntNd
 		} else {
 			# set up missing node labels
+			matchedPhy$node.label <- ifelse(matchedPhy$node.label == "", NA, matchedPhy$node.label)
 			if(any(duplicated(na.omit(matchedPhy$node.label)))) stop('Duplicate node labels present in phylogeny')
-			matchedPhy$node.label <- ifelse(matchedPhy$node.label == "" | is.na(matchedPhy$node.label),  IntNd, matchedPhy$node.label)
+			matchedPhy$node.label <- ifelse(is.na(matchedPhy$node.label),  IntNd, matchedPhy$node.label)
 		}
 		
 		
@@ -98,7 +99,9 @@ comparative.data <- function(phy, data, names.col, vcv=FALSE, vcv.dim=2, na.omit
     
     # NA handling
     if(na.omit){
-        RET <- na.omit(RET, scope) 
+    	before.drop.rows <- rownames(RET$data)
+        RET <- na.omit(RET, scope)
+        if(!identical(rownames(RET$data), before.drop.rows)) RET$dropped$NA.rows <- before.drop.rows
     }
     
 	if(warn.dropped){
@@ -275,24 +278,26 @@ subset.comparative.data <- function(x, subset, select,  ...){
 		}
 		
 		# Work out which to drop
+		#  - 'drop.tip' will create a pointless tree if asked to drop nothing from a tree 
 		rowToKeep <- match(toKeep, rownames)
-		if(length(rowToKeep) < 2) stop('Comparative dataset reduced to fewer than 2 taxa')
-		
-		toDrop    <- setdiff(rownames, toKeep)
-		# this assumes that drop.tip preserves the remaining order - testing suggests ok
-		x$phy <- drop.tip(x$phy, toDrop)
-		
-		# add to dropped list
-		x$dropped$tips <- c(x$dropped$tips, toDrop)
-		
-        # lose VCV elements if needed
-        if(! is.null(x$vcv)){ 
-			if((x$vcv.dim == 2)){
-				x$vcv <- x$vcv[rowToKeep, rowToKeep] 
-			} else {
-				x$vcv <- x$vcv[rowToKeep, rowToKeep, ] 
+		if(length(rowToKeep) < 2) stop('Comparative dataset cannot be reduced to fewer than 2 taxa')
+		if(length(rowToKeep) != length(rownames)) {
+			toDrop    <- setdiff(rownames, toKeep)
+			# this assumes that drop.tip preserves the remaining order - testing suggests ok
+			if(length(rowToKeep) == length(rownames)) warning('No taxa to drop from comparative dataset') else x$phy <- drop.tip(x$phy, toDrop)
+			
+			# add to dropped list
+			x$dropped$tips <- c(x$dropped$tips, toDrop)
+			
+        	# lose VCV elements if needed
+        	if(! is.null(x$vcv)){ 
+				if((x$vcv.dim == 2)){
+					x$vcv <- x$vcv[rowToKeep, rowToKeep] 
+					} else {
+						x$vcv <- x$vcv[rowToKeep, rowToKeep, ] 
+					}
+				}
 			}
-		}
         x$data <- x$data[rowToKeep,, drop=FALSE]
 	}
 	
