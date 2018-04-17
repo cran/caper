@@ -1,6 +1,3 @@
-# Default NAMESPACE created by R
-# Remove the previous line if you edit this file
-
 # Export all names
 exportPattern(".")
 
@@ -11,8 +8,10 @@ import(
   mvtnorm
 )
 
+importFrom("methods", "as")
 importFrom("graphics", "abline", "hist", "lines", "par", "plot",
            "text", "title")
+importFrom("utils", "packageVersion", "str")
 importFrom("stats", "IQR", "anova", "as.formula", "coef",
            "complete.cases", "delete.response", "density", "fitted",
            "formula", "is.empty.model", "lm", "lm.fit", "logLik",
@@ -22,20 +21,24 @@ importFrom("stats", "IQR", "anova", "as.formula", "coef",
            "qqnorm", "quantile", "reorder", "resid", "residuals",
            "rexp", "rstudent", "runif", "stat.anova", "summary.lm",
            "terms", "uniroot", "update", "var", "wilcox.test")
-importFrom("utils", "packageVersion", "str")
 
-S3method("[", comparative.data)
+# register S3 methods
 S3method(anova, caic)
 S3method(anova, caiclist)
 S3method(anova, pgls)
 S3method(anova, pglslist)
-S3method(as.comparative.data, growTree)
 S3method(coef, caic)
 S3method(coef, pgls)
 S3method(fitted, pgls)
 S3method(logLik, caic)
 S3method(logLik, pgls)
+S3method(as, comparative.data.growTree) 
 S3method(na.omit, comparative.data)
+S3method(summary, caic)
+S3method(summary, fusco)
+S3method(summary, pgls)
+S3method(summary, phylo.d)
+S3method(summary, phylo.d.subset)
 S3method(nobs, pgls)
 S3method(plot, caic)
 S3method(plot, fusco)
@@ -56,8 +59,4 @@ S3method(reorder, comparative.data)
 S3method(residuals, caic)
 S3method(residuals, pgls)
 S3method(subset, comparative.data)
-S3method(summary, caic)
-S3method(summary, fusco)
-S3method(summary, pgls)
-S3method(summary, phylo.d)
-S3method(summary, phylo.d.subset)
+S3method('[', comparative.data)
