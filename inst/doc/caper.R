@@ -81,7 +81,10 @@ for(sub in split(dat, dat$tx)) abline(lm(y~x,  data=sub), col=unclass(sub$tx)[1]
 ### code chunk number 3: comparative.data
 ###################################################
 phy <- read.tree(text='(((B:2,A:2):1,D:3):1,(C:1,E:1):3);')
-dat <- data.frame(taxa=c("A","B","C","D","E"), n.species=c(5,9,12,1,13), mass=c(4.1,4.5,5.9,3.0,6.0))
+dat <- data.frame(
+  taxa=c("A","B","C","D","E"), 
+  n.species=c(5,9,12,1,13), mass=c(4.1,4.5,5.9,3.0,6.0)
+)
 cdat <- comparative.data(data=dat, phy=phy, names.col="taxa")
 
 print(cdat)
@@ -631,7 +634,7 @@ set.seed(421)
 
 
 ###################################################
-### code chunk number 38: caper.rnw:997-1014
+### code chunk number 38: caper.rnw:1151-1168
 ###################################################
 # > pantheria <- read.delim('PanTHERIA_1-0_WR05_Aug2008.txt', na.string='-999.00')
 # > vars <- log(pantheria[, c(7,21)])
