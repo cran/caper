@@ -1,5 +1,5 @@
-03831f1fbf422e849501918b63023ef4 *CHANGES
-51496bbb8e254ba0959af21adbf2a84b *DESCRIPTION
+76f3be350a9dd4bdfb981fbdf523a60d *CHANGES
+44029772991de325755b768675ea6703 *DESCRIPTION
 221b1d3b02a4e86fc0332ced4cf7e7b9 *NAMESPACE
 befb3509cf7bc34b1340797be9cb53d9 *R/brunch.R
 22e87076b9cd3cc3cc2bddba9f88c6be *R/caic.diagnostics.R
@@ -13,7 +13,7 @@ cb713be6fa71f2a03f0fa0c0f34ac309 *R/fusco.R
 c87213161e9e7165542a27ba9b6f22c2 *R/growTree.R
 d772df1bf621e006728e1e9d6dec098d *R/macrocaic.R
 6a86cf8d0e21f0cf63b30b05ec9f5d22 *R/pd.calc.R
-48fa3d26e7e830cd9c6ecfec0bc30b51 *R/pgls.R
+c59cb70f4d4fe0a39f4648789edf227a *R/pgls.R
 a6f5cd7f53743ad5bd905a4fb555f7c0 *R/phylo.d.R
 ac55b06df4f068b3be8908c1c1946a81 *R/phylo.d.subset.R
 a1a18715dd37a7cb191c67bbbc6bd8ee *R/vcv.array.R
@@ -33,7 +33,7 @@ b8b6c95f9fd69542d524f1294fcf3f34 *data/perissodactyla.rda
 df6d52f8b5c87f9e32da77e812bac807 *data/shorebird.rda
 0eb234992e3cacf9ef15876bd56061b0 *data/syrphidae.rda
 ddd6fde834c995ccc442b95f9f4bb64a *inst/doc/caper.R
-89800cfb30b8b9ff5b4acbda6246d6a6 *inst/doc/caper.pdf
+42ed947d03290283558dff34057a02be *inst/doc/caper.pdf
 810bb0352328dd3026b3e8500596ee5a *inst/doc/caper.rnw
 c17e543e9ac10a0e0669b50f523a0cd3 *man/BritishBirds.Rd
 2f9b3afe525297c0e19f8824395a5667 *man/IsaacEtAl.Rd
@@ -43,7 +43,7 @@ e5e44395335987d9577296b9d7733c03 *man/benchmarkDatasets.Rd
 112eceb33bf73efd26f242272721d908 *man/caic-class.Rd
 6baf61a439b900d0492d5580540ed41b *man/caic-methods.Rd
 309db761d3ea2447c87fd4b9e8e75235 *man/caic.diagnostics.Rd
-d29577027c33f0e433e115b7ef06a8c9 *man/caper-package.Rd
+584ba1beacca965aab9ed087f0bfa4c8 *man/caper-package.Rd
 19b223ed4532e6741e0ff5bd9efd0cc4 *man/clade.matrix.Rd
 e3303afe93371f60c7275d3eb3652bbf *man/clade.members.Rd
 486a56f0b134bc61aea10c4b99dd4dea *man/comparative.data.Rd
@@ -66,3 +66,4 @@ c6a5e691d64e42e99ec04edc15b7e31e *man/syrphidae.Rd
 5c0918e6e79a627938ec01f240afbe31 *man/vcv.array.Rd
 810bb0352328dd3026b3e8500596ee5a *vignettes/caper.rnw
 a8b84a2d96560fdaa729d267d76021a7 *vignettes/caper_refs.bib
+778f350e7363676d816af054f0d1ff7a *vignettes/style.css
